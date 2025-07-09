@@ -6,7 +6,7 @@
 /*   By: dancuenc <dancuenc@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 12:24:52 by dancuenc          #+#    #+#             */
-/*   Updated: 2025/07/08 15:27:42 by dancuenc         ###   ########.fr       */
+/*   Updated: 2025/07/09 14:49:33 by dancuenc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,10 +48,10 @@ int		ft_atoi(const char *nptr);
 void	*ft_calloc(size_t count, size_t size);
 char	*ft_strdup(const char *s1);
 //Functions for part 2
-char	*ft_substr(char *s, unsigned int start, size_t len);
+char	*ft_substr(char const *s, unsigned int start, size_t len);
 char	*ft_strjoin(char *stash, char *buffer);
 char	*ft_strtrim(char *s1, char *set);
-char	**ft_split(char const *s);
+char	**ft_split(const char *s, char c);
 char	*ft_itoa(int n);
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 void	ft_striteri(char *s, void (*f)(unsigned int, char*));

@@ -5,23 +5,38 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: dancuenc <dancuenc@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/08 15:03:11 by dancuenc          #+#    #+#             */
-/*   Updated: 2025/07/08 15:17:35 by dancuenc         ###   ########.fr       */
+/*   Created: 2025/03/19 13:15:03 by igngonza          #+#    #+#             */
+/*   Updated: 2025/07/09 14:45:08 by dancuenc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/pipex.h"
 
-int	main(int ac, char **av)
+int	main(int argc, char **argv, char **envp)
 {
-	(void)av;
-	if (ac == 5)
+	t_pipex	pipex;
+	int		status;
+	int		last_exit_status;
+	int		last_exit_id;
+
+	last_exit_status = 0;
+	if (argc < check_and_set_heredoc(argv[1], &pipex))
+		return (handle_msg(ERR_INPUT));
+	init_files(argv, argc, &pipex);
+	parse_cmds(&pipex, argv);
+	parse_paths(&pipex, envp);
+	create_pipes(&pipex);
+	pipex.idx = -1;
+	while (++(pipex.idx) < pipex.cmd_count)
+		create_child_process(&pipex, envp);
+	close_pipes(&pipex);
+	last_exit_id = waitpid(-1, &status, 0);
+	while (last_exit_id > 0)
 	{
-		ft_printf("hello world");
+		if (WIFEXITED(status) && pipex.pid == last_exit_id)
+			last_exit_status = WEXITSTATUS(status);
+		last_exit_id = waitpid(-1, &status, 0);
 	}
-	else if (ac != 5)
-	{
-		ft_printf("bye world");		
-	}
-	return (0);
+	parent_free(&pipex);
+	return (last_exit_status);
 }

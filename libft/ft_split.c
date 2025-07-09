@@ -6,103 +6,84 @@
 /*   By: dancuenc <dancuenc@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 13:28:16 by dancuenc          #+#    #+#             */
-/*   Updated: 2025/07/07 13:22:21 by dancuenc         ###   ########.fr       */
+/*   Updated: 2025/07/09 14:47:26 by dancuenc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdio.h>
 #include <stdlib.h>
 
-// Nueva función para comprobar si un carácter es espacio en blanco
-static int	is_whitespace(char c)
+static size_t	ft_find_total_tokens(const char *s, char c)
 {
-	return (c == ' ' || c == '\t' || c == '\n'
-		|| c == '\r' || c == '\v' || c == '\f');
-}
+	size_t	ret;
 
-//Counts the number of words in the string received as an argument.
-int	word_counter(const char *s)
-{
-	int	count;
-	int	in_substring;
-
-	count = 0;
-	in_substring = 0;
+	ret = 0;
 	while (*s)
 	{
-		if (!is_whitespace(*s) && in_substring == 0)
+		if (*s != c)
 		{
-			in_substring = 1;
-			count++;
+			++ret;
+			while (*s && *s != c)
+				++s;
 		}
-		else if (is_whitespace(*s))
-			in_substring = 0;
-		s++;
+		else
+			++s;
 	}
-	return (count);
+	return (ret);
 }
 
-//Creates a word from the string received as an argument.
-char	*word_creator(const char **s)
+static char	**ft_memory_allocation(const char *s, char c)
 {
-	const char	*start;
-	char		*word;
-	size_t		len;
+	char	**ret;
 
-	while (is_whitespace(**s))
-		(*s)++;
-	start = *s;
-	while (**s && !is_whitespace(**s))
-		(*s)++;
-	len = *s - start;
-	word = malloc(sizeof(char) * (len + 1));
-	if (!word)
-		return (NULL);
-	ft_memcpy(word, start, len);
-	word[len] = '\0';
-	return (word);
+	ret = malloc(sizeof(char *) * (ft_find_total_tokens(s, c) + 1));
+	if (!ret)
+	{
+		free(ret);
+		ret = NULL;
+	}
+	return (ret);
 }
 
-//Frees all the memory allocated for the strings.
-void	free_all(char **str, int count)
+static char	**ft_free_memory(char **ret)
 {
-	int	i;
+	int	j;
+
+	j = 0;
+	while (ret[j])
+	{
+		free(ret[j]);
+		j++;
+	}
+	free(ret);
+	return (NULL);
+}
+
+char	**ft_split(const char *s, char c)
+{
+	char	**ret;
+	size_t	i;
+	size_t	len;
 
 	i = 0;
-	while (i < count)
+	ret = ft_memory_allocation(s, c);
+	while (*s && ret)
 	{
-		free(str[i]);
-		i++;
-	}
-	free(str);
-}
-
-/* Splits the string received as an argument
-into words with any whitespace as a delimiter. */
-char	**ft_split(char const *s)
-{
-	char	**str;
-	int		ptr_counter;
-
-	if (!s)
-		return (NULL);
-	str = malloc(sizeof(char *) * (word_counter(s) + 1));
-	if (!str)
-		return (NULL);
-	ptr_counter = 0;
-	while (*s != '\0')
-	{
-		str[ptr_counter] = word_creator(&s);
-		if (!str[ptr_counter])
+		if (*s != c)
 		{
-			free_all(str, ptr_counter);
-			return (NULL);
+			len = 0;
+			while (*s && *s != c && ++len)
+				++s;
+			ret[i] = ft_substr(s - len, 0, len);
+			if (!ret[i])
+				ret = ft_free_memory(ret);
+			i++;
 		}
-		if (str[ptr_counter][0] == '\0')
-			free(str[ptr_counter]);
 		else
-			ptr_counter++;
+			++s;
 	}
-	str[ptr_counter] = NULL;
-	return (str);
+	if (ret != NULL)
+		ret[i] = NULL;
+	return (ret);
 }

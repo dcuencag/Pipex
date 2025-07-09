@@ -44,9 +44,6 @@ $(NAME): $(OBJ) $(FT_PRINTF)
 	@rm -f *.o
 
 $(FT_PRINTF):
-	@echo "\033[1;35m===========================\033[0m"
-	@echo "\033[1;34m→ Building ft_printf...\033[0m"
-	@echo "\033[1;35m===========================\033[0m"
 	@$(MAKE) -C $(FT_PRINTF_DIR)
 
 %.o: %.c
