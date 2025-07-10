@@ -1,7 +1,9 @@
 #ifndef PIPEX_H
 # define PIPEX_H
 
+# include <string.h>
 # include "libft/libft.h"
+#include <string.h>
 # include <errno.h>
 # include <fcntl.h>
 # include <stdio.h>

@@ -40,7 +40,5 @@ char	*ft_strjoin(char *stash, char *buffer)
 		i++;
 		j++;
 	}
-	if (stash)
-		free(stash);
 	return (str);
 }

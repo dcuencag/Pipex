@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "../include/pipex.h"
+#include <string.h>
 
 int	main(int argc, char **argv, char **envp)
 {
@@ -19,6 +20,7 @@ int	main(int argc, char **argv, char **envp)
 	int		last_exit_status;
 	int		last_exit_id;
 
+	memset(&pipex, 0, sizeof(pipex));
 	last_exit_status = 0;
 	if (argc < check_and_set_heredoc(argv[1], &pipex))
 		return (handle_msg(ERR_INPUT));

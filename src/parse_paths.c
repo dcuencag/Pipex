@@ -52,8 +52,9 @@ char	*find_command_path(char **paths, char *cmd)
 		full_path = join_path_cmd(paths[j], cmd);
 		if (!full_path)
 			return (NULL);
-		if (access(full_path, X_OK) == 0)
+		if (access(full_path, X_OK) == 0) {
 			return (full_path);
+		}
 		free(full_path);
 		j++;
 	}
@@ -67,14 +68,14 @@ void	resolve_command_paths(t_pipex *pipex, char **paths)
 	i = 0;
 	while (i < pipex->cmd_count)
 	{
-		if (!pipex->cmd_args[i][0] || pipex->cmd_args[i][0][0] == '\0')
+		if (!pipex->cmd_args[i][0] || pipex->cmd_args[i][0][0] == '\0') {
 			pipex->cmd_paths[i] = NULL;
-		else if (access(pipex->cmd_args[i][0], X_OK) == 0)
+		}
+		else if (access(pipex->cmd_args[i][0], X_OK) == 0) {
 			pipex->cmd_paths[i] = ft_strdup(pipex->cmd_args[i][0]);
-		else
-		{
-			pipex->cmd_paths[i] = find_command_path(paths,
-					pipex->cmd_args[i][0]);
+		}
+		else {
+			pipex->cmd_paths[i] = find_command_path(paths, pipex->cmd_args[i][0]);
 		}
 		i++;
 	}
