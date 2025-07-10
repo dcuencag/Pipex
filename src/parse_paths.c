@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: dancuenc <dancuenc@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/21 10:42:53 by igngonza          #+#    #+#             */
-/*   Updated: 2025/07/09 14:45:15 by dancuenc         ###   ########.fr       */
+/*   Created: 2025/07/10 13:16:11 by dancuenc          #+#    #+#             */
+/*   Updated: 2025/07/10 13:21:21 by dancuenc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,9 +52,8 @@ char	*find_command_path(char **paths, char *cmd)
 		full_path = join_path_cmd(paths[j], cmd);
 		if (!full_path)
 			return (NULL);
-		if (access(full_path, X_OK) == 0) {
+		if (access(full_path, X_OK) == 0)
 			return (full_path);
-		}
 		free(full_path);
 		j++;
 	}
@@ -68,15 +67,13 @@ void	resolve_command_paths(t_pipex *pipex, char **paths)
 	i = 0;
 	while (i < pipex->cmd_count)
 	{
-		if (!pipex->cmd_args[i][0] || pipex->cmd_args[i][0][0] == '\0') {
+		if (!pipex->cmd_args[i][0] || pipex->cmd_args[i][0][0] == '\0')
 			pipex->cmd_paths[i] = NULL;
-		}
-		else if (access(pipex->cmd_args[i][0], X_OK) == 0) {
+		else if (access(pipex->cmd_args[i][0], X_OK) == 0)
 			pipex->cmd_paths[i] = ft_strdup(pipex->cmd_args[i][0]);
-		}
-		else {
-			pipex->cmd_paths[i] = find_command_path(paths, pipex->cmd_args[i][0]);
-		}
+		else
+			pipex->cmd_paths[i] = find_command_path(paths,
+					pipex->cmd_args[i][0]);
 		i++;
 	}
 	pipex->cmd_paths[i] = NULL;

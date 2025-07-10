@@ -1,33 +1,29 @@
-NAME            = pipex
+NAME        = pipex
 
-# Directories
-SRC_DIR         = Src
-LIBFT_DIR       = ./libft
-OBJ_DIR         = obj/
+SRC_DIR     = src
+LIBFT_DIR   = ./libft
+OBJ_DIR     = obj
 
-# Files
-LIBFT           = $(LIBFT_DIR)/libft.a
+LIBFT       = $(LIBFT_DIR)/libft.a
 
-SRCS            = main.c \
-                  init_files.c \
-                  pipes.c \
-                  here_doc.c \
-                  errors.c \
-                  parse_cmds.c \
-                  parse_paths.c \
-                  exec.c \
-                  cleanup.c
+SRCS        = main.c \
+              init_files.c \
+              pipes.c \
+              here_doc.c \
+              errors.c \
+              parse_cmds.c \
+              parse_paths.c \
+              exec.c \
+              cleanup.c
 
-SRC_PATHS       = $(addprefix $(SRC_DIR)/, $(SRCS))
-OBJS            = $(SRCS:%.c=$(OBJ_DIR)%.o)
+SRC_PATHS   = $(addprefix $(SRC_DIR)/, $(SRCS))
+OBJS        = $(SRCS:%.c=$(OBJ_DIR)/%.o)
 
-# Compiler and flags
-CC              = cc
-CFLAGS          = -Wall -Werror -Wextra
-INCLUDES        = -I. -I$(LIBFT_DIR)
-RM              = rm -f
+CC          = cc
+CFLAGS      = -Wall -Werror -Wextra
+INCLUDES    = -I. -I$(LIBFT_DIR)
+RM          = rm -f
 
-# Output
 all:
 	@echo "\033[1;35m==============================\033[0m"
 	@echo "\033[1;31m→ Checking build for pipex...\033[0m"
@@ -55,8 +51,8 @@ $(LIBFT):
 		echo "\033[1;32m✓ Libft already up to date\033[0m"; \
 	fi
 
-$(OBJ_DIR)%.o: $(SRC_DIR)/%.c
-	@mkdir -p $(dir $@)
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
+	@mkdir -p $(OBJ_DIR)
 	@echo "\033[1;36m→ Compiling $<\033[0m"
 	@$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 

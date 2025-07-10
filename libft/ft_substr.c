@@ -6,7 +6,7 @@
 /*   By: dancuenc <dancuenc@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 11:30:06 by dancuenc          #+#    #+#             */
-/*   Updated: 2025/07/09 14:49:10 by dancuenc         ###   ########.fr       */
+/*   Updated: 2025/07/10 13:17:19 by dancuenc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,4 +36,3 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	}
 	return (result);
 }
-

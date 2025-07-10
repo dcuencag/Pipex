@@ -6,7 +6,7 @@
 /*   By: dancuenc <dancuenc@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 12:24:52 by dancuenc          #+#    #+#             */
-/*   Updated: 2025/07/09 14:49:33 by dancuenc         ###   ########.fr       */
+/*   Updated: 2025/07/10 13:17:44 by dancuenc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,7 @@
 # include <limits.h>
 # include <string.h>
 # include "get_next_line.h"
-#include "ft_printf/ft_printf.h"
-
+# include "ft_printf/ft_printf.h"
 
 //Functions for part 1
 int		ft_isalpha(int c);

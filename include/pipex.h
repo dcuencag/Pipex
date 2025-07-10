@@ -1,9 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   pipex.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dancuenc <dancuenc@student.42madrid.com    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/07/10 13:15:07 by dancuenc          #+#    #+#             */
+/*   Updated: 2025/07/10 13:26:39 by dancuenc         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef PIPEX_H
 # define PIPEX_H
 
 # include <string.h>
 # include "libft/libft.h"
-#include <string.h>
+# include <string.h>
 # include <errno.h>
 # include <fcntl.h>
 # include <stdio.h>
@@ -34,6 +46,7 @@ typedef struct s_pipex
 	pid_t	pid;
 }			t_pipex;
 
+int			main(int ac, char **av, char **envp);
 void		init_files(char **argv, int argc, t_pipex *pipex);
 void		get_infile(char **argv, t_pipex *pipex);
 void		get_outfile(char *argv, t_pipex *pipex);
@@ -64,6 +77,5 @@ void		parent_free(t_pipex *pipex);
 
 void		handle_error(const char *message);
 int			handle_msg(char *err);
-
 
 #endif
