@@ -6,12 +6,18 @@
 /*   By: dancuenc <dancuenc@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 13:16:11 by dancuenc          #+#    #+#             */
-/*   Updated: 2025/07/10 13:21:21 by dancuenc         ###   ########.fr       */
+/*   Updated: 2025/07/10 16:31:57 by dancuenc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/pipex.h"
 
+/**
+ * @brief Gets the PATH environment variable from the given environment variables.
+ *
+ * @param envp The environment variables.
+ * @return The PATH environment variable, or NULL if not found.
+ */
 char	*get_env_path(char **envp)
 {
 	int	i;
@@ -26,6 +32,13 @@ char	*get_env_path(char **envp)
 	return (NULL);
 }
 
+/**
+ * @brief Joins a directory path with a command.
+ *
+ * @param dir The directory path.
+ * @param cmd The command to join.
+ * @return The joined path, or NULL if any allocation fails.
+ */
 char	*join_path_cmd(char *dir, char *cmd)
 {
 	char	*temp;
@@ -41,6 +54,13 @@ char	*join_path_cmd(char *dir, char *cmd)
 	return (full_path);
 }
 
+/**
+ * @brief Finds the path of a command in the given paths.
+ *
+ * @param paths The paths to search.
+ * @param cmd The command to find.
+ * @return The path of the command, or NULL if not found.
+ */
 char	*find_command_path(char **paths, char *cmd)
 {
 	int		j;
@@ -60,6 +80,12 @@ char	*find_command_path(char **paths, char *cmd)
 	return (NULL);
 }
 
+/**
+ * @brief Resolves command paths for the pipex program.
+ *
+ * @param pipex Pointer to the pipex struct.
+ * @param paths The paths to resolve.
+ */
 void	resolve_command_paths(t_pipex *pipex, char **paths)
 {
 	int	i;

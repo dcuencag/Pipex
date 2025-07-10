@@ -6,7 +6,7 @@
 /*   By: dancuenc <dancuenc@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 13:15:37 by dancuenc          #+#    #+#             */
-/*   Updated: 2025/07/10 13:18:28 by dancuenc         ###   ########.fr       */
+/*   Updated: 2025/07/10 16:30:51 by dancuenc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,11 @@ void	handle_error(const char *message)
 	perror(message);
 }
 
+/**
+ * @brief Prints a command not found error message to stderr.
+ *
+ * @param arg The command that was not found.
+ */
 void	handle_pipe_msg(char *arg)
 {
 	write(2, ERR_CMD, ft_strlen(ERR_CMD));

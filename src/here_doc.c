@@ -6,7 +6,7 @@
 /*   By: dancuenc <dancuenc@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 13:15:49 by dancuenc          #+#    #+#             */
-/*   Updated: 2025/07/10 13:18:39 by dancuenc         ###   ########.fr       */
+/*   Updated: 2025/07/10 16:31:08 by dancuenc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,11 @@ void	process_heredoc_input(char *limiter, int fd)
 	}
 }
 
+/**
+ * @brief Finalizes the heredoc by opening the temporary file.
+ *
+ * @param pipex Pointer to the pipex struct.
+ */
 void	finalize_heredoc(t_pipex *pipex)
 {
 	pipex->in_fd = open(".heredoc_tmp", O_RDONLY);
