@@ -6,7 +6,7 @@
 /*   By: dancuenc <dancuenc@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 13:16:00 by dancuenc          #+#    #+#             */
-/*   Updated: 2025/07/10 13:26:02 by dancuenc         ###   ########.fr       */
+/*   Updated: 2025/07/10 17:13:56 by dancuenc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@
 /**
  * @brief Initializes and validates command-line arguments and heredoc mode.
  *
- * Sets all fields of the pipex struct to zero and checks for heredoc mode and argument count.
+ * Sets all fields of the pipex struct to zero and
+ * checks for heredoc mode and argument count.
  *
  * @param ac Argument count.
  * @param av Argument vector.
@@ -32,7 +33,8 @@ static int	initialize_and_validate(int ac, char **av, t_pipex *pipex)
 }
 
 /**
- * @brief Sets up files, parses commands and paths, creates pipes, and executes child processes.
+ * @brief Sets up files, parses commands and paths, creates pipes,
+ * and executes child processes.
  *
  * @param pipex Pointer to the pipex struct.
  * @param ac Argument count.
@@ -53,7 +55,8 @@ static void	setup_and_execute(t_pipex *pipex, int ac,
 }
 
 /**
- * @brief Waits for all child processes and returns the exit status of the last command.
+ * @brief Waits for all child processes and
+ * returns the exit status of the last command.
  *
  * @param pipex Pointer to the pipex struct.
  * @return Exit status of the last executed command.

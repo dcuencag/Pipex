@@ -6,7 +6,7 @@
 /*   By: dancuenc <dancuenc@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 13:15:07 by dancuenc          #+#    #+#             */
-/*   Updated: 2025/07/10 16:30:24 by dancuenc         ###   ########.fr       */
+/*   Updated: 2025/07/10 17:13:25 by dancuenc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,8 @@ typedef struct s_pipex
 /**
  * @brief Entry point for the pipex program.
  *
- * Parses arguments, sets up the pipeline, executes commands, and handles cleanup.
+ * Parses arguments, sets up the pipeline,
+ * executes commands, and handles cleanup.
  *
  * @param argc Argument count.
  * @param argv Argument vector.
@@ -211,7 +212,8 @@ void		free_cmd_paths(t_pipex *pipex);
 void		free_cmd_args(t_pipex *pipex);
 
 /**
- * @brief Frees all resources allocated in the pipex struct and closes file descriptors.
+ * @brief Frees all resources allocated in the pipex
+ * struct and closes file descriptors.
  *
  * @param pipex Pointer to the pipex struct.
  */

@@ -6,14 +6,15 @@
 /*   By: dancuenc <dancuenc@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 13:16:11 by dancuenc          #+#    #+#             */
-/*   Updated: 2025/07/10 16:31:57 by dancuenc         ###   ########.fr       */
+/*   Updated: 2025/07/10 17:14:22 by dancuenc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/pipex.h"
 
 /**
- * @brief Gets the PATH environment variable from the given environment variables.
+ * @brief Gets the PATH environment variable
+ * from the given environment variables.
  *
  * @param envp The environment variables.
  * @return The PATH environment variable, or NULL if not found.
